@@ -1,0 +1,6 @@
+﻿services:
+  fos:
+    image: fos
+    build:
+      context: .
+      dockerfile: Dockerfile
