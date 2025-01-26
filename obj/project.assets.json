@@ -2736,11 +2736,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\learn\\Fos\\Fos.csproj",
+      "projectUniqueName": "C:\\learn\\FosBabe\\Fos\\Fos.csproj",
       "projectName": "Fos",
-      "projectPath": "C:\\learn\\Fos\\Fos.csproj",
+      "projectPath": "C:\\learn\\FosBabe\\Fos\\Fos.csproj",
       "packagesPath": "C:\\Users\\B2HD High End Rigs\\.nuget\\packages\\",
-      "outputPath": "C:\\learn\\Fos\\obj\\",
+      "outputPath": "C:\\learn\\FosBabe\\Fos\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gEv2ZKstMvw=",
+  "dgSpecHash": "Gr9j6vY8E9M=",
   "success": true,
-  "projectFilePath": "C:\\learn\\Fos\\Fos.csproj",
+  "projectFilePath": "C:\\learn\\FosBabe\\Fos\\Fos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\B2HD High End Rigs\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\B2HD High End Rigs\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
