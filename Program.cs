@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Add Controller to use 
 builder.Services.AddControllers();
 
 //use inMemoryDatabase
@@ -21,16 +22,37 @@ builder.Services.AddDbContext<FosDB>
 // initialize the services
 builder.Services.AddScoped<IUser, UserRepository>();
 
+//Set fixed port
+builder.WebHost.UseUrls("http://localhost:5000", "https://localhost:5001");
+
 // Add CORS policy
+// builder.Services.AddCors(options =>
+// {
+//     options.AddPolicy("AllowAll", builder =>
+//     {
+//         builder
+//             .WithOrigins("http://localhost:5173/")
+//             .AllowCredentials()
+//             // .AllowAnyOrigin()
+//             .AllowAnyMethod()
+//             .AllowAnyHeader();
+//     });
+// });
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", builder =>
     {
-        builder.AllowAnyOrigin()
+        builder
+            // .WithOrigins("http://localhost:5173")
+            .SetIsOriginAllowed(origin => true)
             .AllowAnyMethod()
-            .AllowAnyHeader();
+            .AllowAnyHeader()
+            .AllowCredentials();
     });
 });
+
+
 
 var app = builder.Build();
 
@@ -40,14 +62,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseRouting();
+// Apply CORS policy
+app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 
 app.MapControllers();
-app.UseRouting();
 
-// Apply CORS policy
-app.UseCors("AllowAll");
 
 var summaries = new[]
 {

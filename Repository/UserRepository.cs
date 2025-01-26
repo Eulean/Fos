@@ -1,3 +1,4 @@
+using System.Data;
 using Fos.Data;
 using Fos.Models;
 using Fos.Services;
@@ -24,6 +25,18 @@ public class UserRepository : IUser
         if (string.IsNullOrEmpty(user.Password))
         {
             throw new ArgumentException("Password cannot be null or empty", nameof(user.Password));
+        }
+
+        if (string.IsNullOrEmpty(user.Email))
+        {
+            throw new ArgumentException("Email cannot be null or empty", nameof(user.Email));
+        }
+
+        var existingUser = GetByEmail(user.Email);
+        
+        if (existingUser != null)
+        {
+            throw new DuplicateNameException("User already exists");
         }
         
         user.HashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
@@ -64,6 +77,11 @@ public class UserRepository : IUser
         if (updateUser is null)
         {
             throw new ArgumentNullException(nameof(updateUser));
+        }
+
+        if (string.IsNullOrEmpty(updateUser.Email))
+        {
+            throw new ArgumentException("Email cannot be null or empty", nameof(updateUser.Email));
         }
         var existingUser = GetByEmail(updateUser.Email);
         if (existingUser is null)
